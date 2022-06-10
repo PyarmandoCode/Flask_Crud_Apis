@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/adicionar" method="post">
+
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="codigo" placeholder="Codigo" required>
+                        </div>
+
+                          <div class="form-group">
+                            <input class="form-control" type="text" name="nombre" placeholder="Nombre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="apellido" placeholder="Apellido" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="estado" placeholder="Estado" required>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">
+                            Adicionar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Estado</th>
+                    <th>Operaciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in cli %}
+                <tr>
+                    <td>{{item.codigo}}</td>
+                    <td><strong>{{item.nombre}}</strong></td>
+                    <td>{{item.apellido}}</td>
+                    <td>{{item.estado}}</td>
+                    <td>
+
+                        <a class="btn btn-danger"
+                           href="/eliminar/{{item.codigo}}">
+                            Delete
+                        </a>
+                        <a class="btn btn-info"
+                           href="/update/{{item.codigo}}">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

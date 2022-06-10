@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/update/{{cliente.codigo}}" method="post">
+
+                          <div class="form-group">
+                            <input class="form-control" type="text" name="nombre" placeholder="Nombre" value ="{{cliente.nombre}}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="apellido" placeholder="Apellido" value ="{{cliente.apellido}}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="estado" placeholder="Estado" value ="{{cliente.estado}}" required>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">
+                            Actualizar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
